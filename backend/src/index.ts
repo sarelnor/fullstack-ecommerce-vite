@@ -109,11 +109,11 @@ app.get('/api/products/category/:category', async (req: Request, res: Response, 
   }
 });
 
-// Get products newly added (last 6 days)
+// Get products newly added (last 10 days)
 app.get('/api/products/new', async (req: Request, res: Response, next: NextFunction) => {
   const { sortBy, order, materials } = req.query;
   const materialFilter = materials ? (materials as string).split(',') : [];
-  let query = `SELECT * FROM products WHERE created_at >= NOW() - INTERVAL '6 days'`;
+  let query = `SELECT * FROM products WHERE created_at >= NOW() - INTERVAL '10 days'`;
   const queryParams: any[] = [];
 
   if (materialFilter.length > 0) {
