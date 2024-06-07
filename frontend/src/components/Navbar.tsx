@@ -75,10 +75,13 @@ const Navbar: React.FC = () => {
           <div className="relative w-full max-w-2xl p-5 flex items-center justify-between">
             <input
               type="text"
+              id="search" 
+              name="search" 
               className="w-full max-w-2/3 p-2 rounded bg-white text-black"
               placeholder="Search products..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              aria-label="Search products"
             />
             <button onClick={toggleSearch} className="text-white focus:outline-none ml-4">
               <MdClose size={24} />

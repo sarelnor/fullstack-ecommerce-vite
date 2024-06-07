@@ -73,7 +73,10 @@ const Footer = () => {
             <input
               className="w-full p-2 mr-4 rounded-md mb-4 text-zinc-900"
               type="email"
+              id="email" 
+              name="email"
               placeholder="Enter email.."
+              autoComplete="email"
             />
             <button className="p-2 mb-4 bg-zinc-600 hover:bg-zinc-700 text-white rounded cursor-pointer">
               Subscribe

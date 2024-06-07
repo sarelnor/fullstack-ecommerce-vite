@@ -10,8 +10,10 @@ const SortFilterOptions: React.FC<SortFilterOptionsProps> = ({
   return (
     <div className="flex flex-col w-full max-w-4xl mb-4 mt-4">
       <div className="mb-2">
-        <label className="mr-3">Sort By: </label>
+        <label htmlFor="sortBy" className="mr-3">Sort By: </label>
         <select
+          id="sortBy"
+          name="sortBy"
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
           className="ml-2 p-2 border rounded w-48"
@@ -24,8 +26,10 @@ const SortFilterOptions: React.FC<SortFilterOptionsProps> = ({
         </select>
       </div>
       <div className="mb-2">
-        <label className="mr-2">Filter by: </label>
+        <label htmlFor="filterBy" className="mr-2">Filter by: </label>
         <select
+          id="filterBy"
+          name="filterBy"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
           className="ml-2 p-2 border rounded w-48"
