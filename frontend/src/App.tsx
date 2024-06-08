@@ -13,6 +13,7 @@ import Cart from './pages/Cart';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import ProductPage from './pages/ProductPage';
+import ScrollToTop from './components/ScrollToTop';
 
 const AppContent = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ const AppContent = () => {
   return (
     <>
       <Navbar isHome={isHome} />
+      <ScrollToTop />
       <main className={`${isHome ? "" : "py-10 px-6"}`}>
         <Routes>
           <Route path="/" element={<Home />} />
