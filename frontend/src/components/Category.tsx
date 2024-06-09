@@ -3,6 +3,8 @@ import axios from "axios";
 import { Product, CategoryComponentProps } from "../types/types";
 import ProductList from "./ProductList";
 import SortFilterOptions from "./SortFilterOptions";
+import Header from "./Header";
+import headerBackground from "./headerBackground"; 
 
 const Category: React.FC<CategoryComponentProps> = ({ category, endpoint }) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -56,18 +58,20 @@ const Category: React.FC<CategoryComponentProps> = ({ category, endpoint }) => {
       ? category
       : category.charAt(0).toUpperCase() + category.slice(1) + "s";
 
+  const backgroundImage = headerBackground[category] || "/default-image.jpg";
+
   return (
-    <div className="p-4">
-      <h1 className="text-3xl font-bold mb-8 text-center">
-        {formattedCategory}
-      </h1>
-      <SortFilterOptions
-        sortBy={sortBy}
-        setSortBy={setSortBy}
-        filter={filter}
-        setFilter={setFilter}
-      />
-      <ProductList products={products} />
+    <div>
+      <Header backgroundImage={backgroundImage} title={formattedCategory} />
+      <div className="px-6 py-8">
+        <SortFilterOptions
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          filter={filter}
+          setFilter={setFilter}
+        />
+        <ProductList products={products} />
+      </div>
     </div>
   );
 };

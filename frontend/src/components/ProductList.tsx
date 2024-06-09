@@ -24,7 +24,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-8">
         {products.map((product) => (
           <div
             key={product.id}
@@ -40,7 +40,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
               />
             </div>
             <Link to={`/products/${product.id}`}>
-              <h2 className="text-xl font-semibold cursor-pointer mt-2 mb-2 hover:text-zinc-500 hover:underline">
+              <h2 className="text-xl font-medium font-inter cursor-pointer mt-2 mb-2 hover:text-zinc-500 hover:underline">
                 {product.name}
               </h2>
             </Link>
@@ -49,7 +49,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
             <div className="mt-auto flex justify-center pt-4 pb-4">
               <button
                 onClick={() => addToCart(product.id)}
-                className="w-1/2 mx-auto mt-2 text-white py-2 rounded font-medium bg-zinc-600 hover:bg-zinc-800 transition"
+                className="w-2/3 mx-auto mt-2 text-white py-2 rounded font-medium bg-zinc-600 hover:bg-zinc-800 transition"
               >
                 Add to Cart
               </button>

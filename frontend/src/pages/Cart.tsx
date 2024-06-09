@@ -8,7 +8,7 @@ const Cart: React.FC = () => {
 
   return (
     <main className="flex flex-col items-center p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
+      <h1 className="text-4xl font-bold my-6">Your Cart</h1>
       {cartItems.length === 0 ? (
         <div className="text-center">
           <p className="text-lg mb-6">Your cart is currently empty.</p>
@@ -30,7 +30,7 @@ const Cart: React.FC = () => {
                     className="mr-4 mb-4 md:mb-0"
                   />
                   <div>
-                    <h2 className="text-xl font-medium">{item.name}</h2>
+                    <h2 className="text-xl font-medium font-inter">{item.name}</h2>
                     <p className="text-sm text-gray-600">Quantity: {item.quantity}</p>
                     <p className="text-sm text-gray-600">Price: ${item.price}</p>
                   </div>
@@ -59,7 +59,7 @@ const Cart: React.FC = () => {
             ))}
           </ul>
           <div className="w-full max-w-4xl bg-white rounded-lg shadow-md p-10">
-            <h2 className="text-2xl font-medium mb-4">Cart Summary</h2>
+            <h2 className="text-3xl mb-4">Cart Summary</h2>
             <div className="flex justify-between mb-4">
               <span className="text-lg">Total Items:</span>
               <span className="text-lg">{cartItems.reduce((sum: number, item: CartItem) => sum + item.quantity, 0)}</span>

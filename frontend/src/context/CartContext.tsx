@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { CartItem, CartContextProps } from "../types/types";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/styles.css";
 
@@ -126,7 +126,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       value={{ cartItems, totalCost, addToCart, updateQuantity, removeFromCart }}
     >
       {children}
-      <ToastContainer />
     </CartContext.Provider>
   );
 };

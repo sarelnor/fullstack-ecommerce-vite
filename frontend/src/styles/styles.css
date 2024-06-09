@@ -1,9 +1,13 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 /* Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Root Variables */
+/* Root */
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,6 +23,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2 {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 300;
+}
+
+.font-bodoni {
+  font-family: 'Bodoni Moda', serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
 .main-content {
   margin: 20px;
 }
@@ -26,6 +43,11 @@ body {
 ul {
   list-style: none;
   padding: 0;
+}
+
+nav {
+  font-weight: 200;
+  font-size: 1.125rem;
 }
 
 a {
@@ -57,6 +79,14 @@ section {
 
 .fade-in {
   animation: fadeIn 1s ease-in-out;
+}
+
+.custom-container {
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .Toastify__toast {

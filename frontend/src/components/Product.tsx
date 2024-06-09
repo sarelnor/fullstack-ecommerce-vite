@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 import SimpleModal from "./SimpleModal";
+import '../styles/styles.css';
 
 const Product: React.FC<ProductProps> = ({ id }) => {
   const [product, setProduct] = useState<ProductType | null>(null);
@@ -49,39 +50,41 @@ const Product: React.FC<ProductProps> = ({ id }) => {
 
   return (
     <>
-      <div className="p-10 rounded-lg shadow-md bg-white max-w-7xl mx-auto">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center text-gray-700 mb-4"
-        >
-          <FaArrowLeft className="mr-2" />
-          Go back
-        </button>
-        <div className="flex flex-col md:flex-row pr-2">
-          <div className="relative w-full md:w-2/3 h-96 md:h-[600px] mb-4 md:mb-0">
-            <img
-              src={product.image_url}
-              alt={product.name}
-              className="object-contain rounded-lg cursor-pointer"
-              style={{ width: "100%", height: "100%" }}
-              onClick={() => openModal(product.image_url, product.name)}
-            />
-          </div>
-          <div className="md:w-1/3 md:pl-2 flex flex-col justify-center">
-            <h1 className="text-4xl font-bold mb-8 text-center md:text-left">
-              {product.name}
-            </h1>
-            <p className="mb-6">
-              <strong>Material:</strong> {product.material}
-            </p>
-            <p className="mb-6">{product.description}</p>
-            <p className="text-lg font-bold mb-6">Price: ${product.price}</p>
-            <button
-              onClick={() => addToCart(product.id)}
-              className="w-full md:w-auto text-white py-2 rounded-sm font-medium bg-zinc-600 hover:bg-zinc-700 transition"
-            >
-              Add to Cart
-            </button>
+      <div className="custom-container py-10">
+        <div className="bg-white p-8 rounded-lg shadow-md">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center text-gray-700 mb-4"
+          >
+            <FaArrowLeft className="mr-2" />
+            Go back
+          </button>
+          <div className="flex flex-col md:flex-row">
+            <div className="relative w-full md:w-2/3 h-96 md:h-[600px] mb-4 md:mb-0">
+              <img
+                src={product.image_url}
+                alt={product.name}
+                className="object-contain rounded-lg cursor-pointer"
+                style={{ width: "100%", height: "100%" }}
+                onClick={() => openModal(product.image_url, product.name)}
+              />
+            </div>
+            <div className="md:w-1/3 flex flex-col justify-center">
+              <h1 className="text-3xl font-semibold font-inter mb-8 text-center md:text-left">
+                {product.name}
+              </h1>
+              <p className="mb-6">
+                <strong>Material:</strong> {product.material}
+              </p>
+              <p className="mb-6">{product.description}</p>
+              <p className="text-lg font-bold mb-6">Price: ${product.price}</p>
+              <button
+                onClick={() => addToCart(product.id)}
+                className="w-2/3 mx-auto mt-2 text-white py-2 rounded font-medium bg-zinc-600 hover:bg-zinc-700 transition"
+              >
+                Add to Cart
+              </button>
+            </div>
           </div>
         </div>
       </div>

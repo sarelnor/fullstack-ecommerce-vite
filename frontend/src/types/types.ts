@@ -63,3 +63,8 @@ export interface SectionProps {
   linkText?: string;
   backgroundColor?: string;
 }
+
+export interface HeaderProps {
+  backgroundImage: string;
+  title: string;
+}

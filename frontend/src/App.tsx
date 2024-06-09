@@ -14,6 +14,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import ProductPage from './pages/ProductPage';
 import ScrollToTop from './components/ScrollToTop';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AppContent = () => {
   const location = useLocation();
@@ -23,7 +25,7 @@ const AppContent = () => {
     <>
       <Navbar isHome={isHome} />
       <ScrollToTop />
-      <main className={`${isHome ? "" : "py-10 px-6"}`}>
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<AllProducts />} />
@@ -35,10 +37,11 @@ const AppContent = () => {
           <Route path="/products/:id" element={<ProductPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<Cart />} />     
         </Routes>
       </main>
       <Footer />
+      <ToastContainer />
     </>
   );
 };

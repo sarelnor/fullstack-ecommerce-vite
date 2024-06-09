@@ -9,6 +9,10 @@ export default {
       screens: {
         custom: "1000px", // Custom breakpoint at 1000px
       },
+      fontFamily: {
+        'bodoni': ['Bodoni Moda', 'serif'],
+        'inter': ['Inter', 'sans-serif'],
+      },
     },
   },
   plugins: [],
