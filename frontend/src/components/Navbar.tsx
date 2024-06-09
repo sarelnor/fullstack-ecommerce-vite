@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link} from 'react-router-dom';
 import { MdMenu, MdClose, MdSearch } from 'react-icons/md';
 import { BsBag } from 'react-icons/bs';
@@ -13,6 +13,7 @@ const Navbar: React.FC<NavbarProps> = ({ isHome }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const { cartItems } = useCart();
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleSearch = () => setSearchOpen(!searchOpen);
@@ -32,6 +33,24 @@ const Navbar: React.FC<NavbarProps> = ({ isHome }) => {
       setSearchResults([]);
     }
   }, [searchTerm]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
@@ -107,21 +126,21 @@ const Navbar: React.FC<NavbarProps> = ({ isHome }) => {
           )}
         </div>
       )}
-      <div className={`custom:hidden fixed top-0 left-0 h-full bg-zinc-800 bg-opacity-95 flex flex-col items-center justify-center z-50 transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'} w-full sm:w-1/3`}>
-        <button onClick={toggleMenu} className="absolute top-4 right-4 text-white focus:outline-none">
-          <MdClose size={24} />
-        </button>
-        <ul className="flex flex-col items-center space-y-8">
-          <li className="text-white text-xl font-bold"><Link to="/" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>Home</Link></li>
-          <li className="text-white text-xl font-light"><Link to="/products" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>All Products</Link></li>
-          <li className="text-white text-xl font-light"><Link to="/products/new" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>New Products</Link></li>
-          <li className="text-white text-xl font-light"><Link to="/products/category/rings" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>Rings</Link></li>
-          <li className="text-white text-xl font-light"><Link to="/products/category/earrings" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>Earrings</Link></li>
-          <li className="text-white text-xl font-light"><Link to="/products/category/bracelets" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>Bracelets</Link></li>
-          <li className="text-white text-xl font-light"><Link to="/products/category/necklaces" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>Necklaces</Link></li>
-          <li className="text-white text-xl font-bold"><Link to="/cart" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>Cart</Link></li>
-        </ul>
-      </div>
+    <div ref={menuRef} className={`custom:hidden fixed top-0 left-0 h-full bg-zinc-800 bg-opacity-95 flex flex-col items-center justify-center z-50 transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'} w-full sm:w-1/3`}>
+      <button onClick={toggleMenu} className="absolute top-4 right-4 text-white focus:outline-none">
+        <MdClose size={24} />
+      </button>
+      <ul className="flex flex-col items-center space-y-8">
+        <li className="text-white text-xl font-bold"><Link to="/" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>Home</Link></li>
+        <li className="text-white text-xl font-light"><Link to="/products" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>All Products</Link></li>
+        <li className="text-white text-xl font-light"><Link to="/products/new" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>New Products</Link></li>
+        <li className="text-white text-xl font-light"><Link to="/products/category/rings" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>Rings</Link></li>
+        <li className="text-white text-xl font-light"><Link to="/products/category/earrings" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>Earrings</Link></li>
+        <li className="text-white text-xl font-light"><Link to="/products/category/bracelets" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>Bracelets</Link></li>
+        <li className="text-white text-xl font-light"><Link to="/products/category/necklaces" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>Necklaces</Link></li>
+        <li className="text-white text-xl font-bold"><Link to="/cart" onClick={toggleMenu} className="hover:text-shadow-glow" style={linkStyle} onMouseEnter={e => e.currentTarget.style.textShadow = linkHoverStyle.textShadow} onMouseLeave={e => e.currentTarget.style.textShadow = 'none'}>Cart</Link></li>
+      </ul>
+    </div>
     </nav>
   );
 };
