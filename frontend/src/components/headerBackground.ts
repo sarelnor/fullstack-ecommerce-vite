@@ -1,10 +1,10 @@
 const headerBackground: { [key: string]: string } = {
-  "All Products": "/path-to-all-products-image.jpg",
-  "New Products": "/path-to-new-products-image.jpg",
-  "Bracelet": "/path-to-bracelet-image.jpg",
-  "Earring": "/path-to-earring-image.jpg",
-  "Necklace": "/path-to-necklace-image.jpg",
-  "Ring": "/path-to-ring-image.jpg",
+  "All Products": "/images/allproducts3.jpg",
+  "New Products": "/images/news2.jpg",
+  "Bracelet": "/images/bracelets6.jpg",
+  "Earring": "/images/earrings2.jpg",
+  "Necklace": "/images/necklaces3.jpg",
+  "Ring": "/images/rings5.jpg",
 };
 
 export default headerBackground;

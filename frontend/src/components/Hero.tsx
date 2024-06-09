@@ -10,7 +10,7 @@ const Hero = () => {
         style={{ objectFit: "cover", width: "100%", height: "100%" }}
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 space-y-4">
-        <h1 className="text-3xl md:text-5xl lg:text-6xl text-white font-bold mt-16">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-bold mt-48">
           Summer trends
         </h1>
         <Link to="/products/new" className="no-underline hover:no-underline">

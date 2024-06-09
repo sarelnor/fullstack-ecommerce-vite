@@ -41,7 +41,7 @@ const Home = () => (
         backgroundColor="#fdfbfb"
       />
       <Section
-        title="Featured in"
+        title="Featured In"
         content=""
         link=""
         linkText=""

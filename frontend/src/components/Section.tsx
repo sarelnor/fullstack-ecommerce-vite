@@ -22,8 +22,8 @@ const Section: React.FC<ExtendedSectionProps> = ({
         minHeight: "66vh",
       }}
     >
-      <h2 className="text-5xl mb-8 px-8">{title}</h2>
-      <p className="text-lg mb-4 px-4">{content}</p>
+      <h2 className="text-4xl md:text-5xl mb-8 px-8">{title}</h2>
+      <p className="text-lg mb-4 px-8 md:px-16 lg:px-32 xl:px-48 2xl:px-64">{content}</p>
       {link && (
         <Link to={link} className="mt-4 text-blue-500 hover:underline">
           {linkText}
